@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html> 
+<body>
+<input type="text" id="name" placeholder="Name" /><br><br>
+<input type="text" id="address" placeholder="Address"><br><br />
+<input type="text" id="email" placeholder="Email Address"><br /><br>
+<input type="text" id="contact" placeholder="Contact Number" /><br><br>
+
+<input type="BUTTON" class="btn" value="Save"  onclick="insert()" />
+<input type="text" id="srch" placeholder="Search" />
+<input type="button" value="Search" onclick="searchInfo()" />
+<div id="txt" ></div>
+
+<script>
+var InfoName = [];
+var InfoAdd = [];
+var InfoMail = [];
+var InfoContact = [];
+
+
+var nameInput = document.getElementById("name");
+var addressInput = document.getElementById("address");
+var emailInput = document.getElementById("email");
+var contactInput = document.getElementById("contact");
+var searchInput = document.getElementById("srch");
+var display = document.getElementById("txt");
+
+function insert()
+{
+	InfoName.push(nameInput.value);
+    InfoAdd.push(addressInput.value);
+    InfoMail.push(emailInput.value);
+    InfoContact.push(contactInput.value);
+    nameInput.value = "";
+	addressInput.value = "";
+	emailInput.value = "";
+	contactInput.value = "";
+	display.innerHTML = "";
+	display.innerHTML += "Name: " + InfoName.join(", ") + "<br />";
+	display.innerHTML += "Address: " + InfoAdd.join(", ") + "<br />";
+	display.innerHTML += "Email: " + InfoMail.join(", ") + "<br />";
+	display.innerHTML += "Contact: " + InfoContact.join(", ") + "<br />";
+};
+
+function searchInfo() 
+{
+for (var a=0; a < InfoName.length; a++) {
+if (searchInput.value == InfoName[a]) {
+display.innerHTML = "";
+display.innerHTML += "Name: " + InfoName[a] +"<br />";
+display.innerHTML += "Address: " +InfoAdd[a] +"<br />";
+display.innerHTML += "Email: " +InfoMail[a] +"<br />";
+display.innerHTML += "Contact: " +InfoContact[a] +"<br />";
+}
+}
+}
+
+</script>
+</body>
+</html>
